@@ -6,6 +6,8 @@ const connectdb = require("./Database/connection");
 const postsRoutes = require("./Routes/postsRoutes");
 const dalleRoutes = require("./Routes/dalleRoutes");
 
+const PORT = process.env.PORT || 8080
+
 dotenv.config();
 
 const app = express();
@@ -23,8 +25,8 @@ app.get("/", async (req, res) => {
 const startServer = async () => {
   try {
     connectdb(process.env.MONGODB_URL);
-    app.listen(8080, () => {
-      console.log("App is running on port 8080");
+    app.listen(PORT, () => {
+      console.log("App is running on port", PORT);
     });
   } catch (error) {
     console.log(error);
